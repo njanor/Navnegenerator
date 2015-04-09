@@ -21,11 +21,11 @@ namespace Navnegenerator.Navneverktøy.Testar
                 writer.Flush();
 			    stream.Position = 0;
 
-			    var etternavnsoversikt = EtternavnParser.ParseEtternavn(reader);
+			    var etternavnsoversikt = NavneParser.ParseEtternavn(reader);
 
-			    etternavnsoversikt.HentAlleEtternavn().Count().ShouldBe(2);
-			    etternavnsoversikt.HentAlleEtternavn().ShouldContain("Hansen");
-			    etternavnsoversikt.HentAlleEtternavn().ShouldContain("Johansen");
+			    etternavnsoversikt.HentAlleNavn().Count().ShouldBe(2);
+			    etternavnsoversikt.HentAlleNavn().ShouldContain("Hansen");
+			    etternavnsoversikt.HentAlleNavn().ShouldContain("Johansen");
 			}
         }
 
@@ -41,7 +41,7 @@ namespace Navnegenerator.Navneverktøy.Testar
                 writer.Flush();
                 stream.Position = 0;
 
-                Should.Throw<Exception>(() => EtternavnParser.ParseEtternavn(reader));
+                Should.Throw<Exception>(() => NavneParser.ParseEtternavn(reader));
 			}
         }
     }

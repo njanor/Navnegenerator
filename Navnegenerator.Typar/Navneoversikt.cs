@@ -9,25 +9,25 @@ namespace Navnegenerator.Typar
     {
         private Random random = new Random();
         private int totaltAntallTal;
-        private readonly SortedDictionary<int, string> navna = new SortedDictionary<int, string>();
+        private readonly SortedDictionary<int, string> navn = new SortedDictionary<int, string>();
 
         public void LeggTilNavn(string navn, int antall)
         {
-            navna.Add(totaltAntallTal, navn);
+            this.navn.Add(totaltAntallTal, navn);
             totaltAntallTal += antall;
         }
 
-        public IEnumerable<string> HentAlleEtternavn()
+        public IEnumerable<string> HentAlleNavn()
         {
-            return navna.Values;
+            return navn.Values;
         }
 
         public string HentEitNyttTilfeldigNavn()
         {
-            if (navna.Count == 0)
+            if (navn.Count == 0)
                 throw new NavnegeneratorException("Kan ikkje generera eit navn når oversikta ikkje har navn.");
             var navnenummer = random.Next(totaltAntallTal);
-            return navna.Last(x => x.Key <= navnenummer).Value;
+            return navn.Last(x => x.Key <= navnenummer).Value;
         }
     }
 }

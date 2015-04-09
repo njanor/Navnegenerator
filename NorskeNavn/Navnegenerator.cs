@@ -13,7 +13,7 @@ namespace NorskeNavn
         {
             var assembly = Assembly.GetExecutingAssembly();
             var etternavnReader = new StreamReader(assembly.GetManifestResourceStream("NorskeNavn.Resources.etternavn.csv"));
-            etternavnsoversikt = EtternavnParser.ParseEtternavn(etternavnReader);
+            etternavnsoversikt = NavneParser.ParseEtternavn(etternavnReader);
         }
 
         public Navn GenererNyttNavn()
