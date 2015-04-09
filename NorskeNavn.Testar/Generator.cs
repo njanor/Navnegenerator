@@ -4,12 +4,12 @@ using Shouldly;
 
 namespace NorskeNavn.Testar
 {
-    public class NavnegeneratorTestar
+    public class GeneratorTestar
     {
         [Test]
         public void GenereringAvNavnFråSSB_GenererNyttNavn_FårSkikkelegEtternavn()
         {
-            var navnegenerator = new Navnegenerator();
+            var navnegenerator = new Generator();
             var navn = navnegenerator.GenererNyttNavn();
             navn.Etternavn.ShouldNotBeEmpty();
             navn.Fornavn.ShouldNotBeEmpty();
@@ -18,7 +18,7 @@ namespace NorskeNavn.Testar
         [Test]
         public void GenereringAvNavn_VedGenereringAvMangeKvinnenavn_SkalDeiIkkjeMatchaEitHerrenavn()
         {
-            var navnegenerator = new Navnegenerator();
+            var navnegenerator = new Generator();
             IList<string> mangeKvinnenavn = new List<string>();
             for (int i = 0; i < 1000; i++)
             {

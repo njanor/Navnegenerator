@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("NorskeNavn")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A library to generate Norwegian names based on the yearly statistics from Statistisk sentralbyrå (SSB). Generates names with a single first name and a single last name.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Njål Nordmark")]
 [assembly: AssemblyProduct("NorskeNavn")]

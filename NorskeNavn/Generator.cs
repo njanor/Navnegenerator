@@ -6,14 +6,14 @@ using Navnegenerator.Typar;
 
 namespace NorskeNavn
 {
-    public class Navnegenerator
+    public class Generator
     {
         private readonly Random random = new Random();
         private readonly Navneoversikt etternavnsoversikt;
         private readonly Navneoversikt kvinnenavnsoversikt;
         private readonly Navneoversikt herrenavnsoversikt;
 
-        public Navnegenerator()
+        public Generator()
         {
             etternavnsoversikt = NavneParser.ParseEtternavn(HentReader("NorskeNavn.Resources.etternavn.csv"));
             kvinnenavnsoversikt = NavneParser.ParseFornavn(HentReader("NorskeNavn.Resources.jentenavn.csv"));
