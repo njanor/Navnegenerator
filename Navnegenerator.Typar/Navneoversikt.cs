@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using Navnegenerator.Typar.Exceptions;
 
 namespace Navnegenerator.Typar
 {
@@ -16,6 +18,13 @@ namespace Navnegenerator.Typar
         public IEnumerable<string> HentAlleEtternavn()
         {
             return navna.Values;
+        }
+
+        public string HentEitNyttTilfeldigNavn()
+        {
+            if (navna.Count == 0)
+                throw new NavnegeneratorException("Kan ikkje generera eit navn når oversikta ikkje har navn.");
+            return navna.Values.First();
         }
     }
 }
