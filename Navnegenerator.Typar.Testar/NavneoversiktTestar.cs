@@ -38,8 +38,8 @@ namespace Navnegenerator.Typar.Testar
             var antalPassePopulæreNavnGenerert = 0;
             var antalMinstPopulæreNavnGenerert = 0;
 
-            const int antalNavnÅGenerera = 10000;
-            const int feiltoleranse = 100;
+            const int antalNavnÅGenerera = 100000;
+            const int feiltoleranse = 1000;
             const int forventaAntalMestPopulæreNavn = prosentAvMestPopulæreNavn*antalNavnÅGenerera/100;
             const int forventaAntalPassePopulæreNavn = prosentAvPassePopulæreNavn*antalNavnÅGenerera/100;
             const int forventaAntalMinstPopulæreNavn = prosentAvMinstPopulæreNavn*antalNavnÅGenerera/100;
