@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using Shouldly;
 
 namespace NorskeNavn.Testar
@@ -12,6 +13,20 @@ namespace NorskeNavn.Testar
             var navn = navnegenerator.GenererNyttNavn();
             navn.Etternavn.ShouldNotBeEmpty();
             navn.Fornavn.ShouldNotBeEmpty();
+        }
+
+        [Test]
+        public void GenereringAvNavn_VedGenereringAvMangeKvinnenavn_SkalDeiIkkjeMatchaEitHerrenavn()
+        {
+            var navnegenerator = new Navnegenerator();
+            IList<string> mangeKvinnenavn = new List<string>();
+            for (int i = 0; i < 1000; i++)
+            {
+                mangeKvinnenavn.Add(navnegenerator.GenererNyttKvinnenavn().Fornavn);
+            }
+            var eitHerrenavn = navnegenerator.GenererNyttHerrenavn().Fornavn;
+
+            mangeKvinnenavn.ShouldNotContain(eitHerrenavn);
         }
     }
 }

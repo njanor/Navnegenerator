@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Reflection;
 using Navnegenerator.Navneverktøy;
 using Navnegenerator.Typar;
@@ -7,13 +8,26 @@ namespace NorskeNavn
 {
     public class Navnegenerator
     {
-        private Navneoversikt fornavnsoversikt;
-        private Navneoversikt etternavnsoversikt;
+        private readonly Random random = new Random();
+        private readonly Navneoversikt etternavnsoversikt;
+        private readonly Navneoversikt kvinnenavnsoversikt;
+        private readonly Navneoversikt herrenavnsoversikt;
 
         public Navnegenerator()
         {
             etternavnsoversikt = NavneParser.ParseEtternavn(HentReader("NorskeNavn.Resources.etternavn.csv"));
-            fornavnsoversikt = NavneParser.ParseFornavn(HentReader("NorskeNavn.Resources.jentenavn.csv"));
+            kvinnenavnsoversikt = NavneParser.ParseFornavn(HentReader("NorskeNavn.Resources.jentenavn.csv"));
+            herrenavnsoversikt = NavneParser.ParseFornavn(HentReader("NorskeNavn.Resources.gutenavn.csv"));
+        }
+
+        private Navneoversikt Navneoversikt
+        {
+            get
+            {
+                if (random.Next(1) == 1)
+                    return kvinnenavnsoversikt;
+                return herrenavnsoversikt;
+            }
         }
 
         private static StreamReader HentReader(string etternavncsv)
@@ -25,7 +39,22 @@ namespace NorskeNavn
 
         public Navn GenererNyttNavn()
         {
-            return new Navn(fornavnsoversikt.HentEitNyttTilfeldigNavn(), etternavnsoversikt.HentEitNyttTilfeldigNavn());
+            return NyttNavnMedFornavn(Navneoversikt.HentEitNyttTilfeldigNavn());
+        }
+
+        public Navn GenererNyttKvinnenavn()
+        {
+            return NyttNavnMedFornavn(kvinnenavnsoversikt.HentEitNyttTilfeldigNavn());
+        }
+
+        public Navn GenererNyttHerrenavn()
+        {
+            return NyttNavnMedFornavn(herrenavnsoversikt.HentEitNyttTilfeldigNavn());
+        }
+
+        private Navn NyttNavnMedFornavn(string fornavn)
+        {
+            return new Navn(fornavn, etternavnsoversikt.HentEitNyttTilfeldigNavn());
         }
     }
 }
