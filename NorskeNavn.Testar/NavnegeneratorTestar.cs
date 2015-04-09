@@ -11,8 +11,7 @@ namespace NorskeNavn.Testar
             var navnegenerator = new Navnegenerator();
             var navn = navnegenerator.GenererNyttNavn();
             navn.Etternavn.ShouldNotBeEmpty();
-            //TODO: Generer fornavn og slikt
-            //navn.Fornavn.ShouldNotBeEmpty();
+            navn.Fornavn.ShouldNotBeEmpty();
         }
     }
 }

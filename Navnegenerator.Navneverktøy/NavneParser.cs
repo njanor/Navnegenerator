@@ -16,12 +16,12 @@ namespace Navnegenerator.Navneverktøy
 
         public static Navneoversikt ParseFornavn(StreamReader fornavnReader)
         {
-            return LagNavneoversikt<FornavnFraCSV>(fornavnReader);
+            return LagNavneoversikt<FornavnFråCSV>(fornavnReader);
         }
 
         private static Navneoversikt LagNavneoversikt<T>(StreamReader navnReader) where T : NavnFråCSV
         {
-            var navn = HentNavn<T>(navnReader);
+            var navn = HentNavn<T>(navnReader).ToList();
             return LagNavneoversiktFråNavn(navn);
         }
 

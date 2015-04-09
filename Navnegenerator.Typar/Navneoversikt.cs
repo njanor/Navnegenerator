@@ -7,12 +7,14 @@ namespace Navnegenerator.Typar
 {
     public class Navneoversikt
     {
-        private Random random = new Random();
+        private readonly Random random = new Random();
         private int totaltAntallTal;
         private readonly SortedDictionary<int, string> navn = new SortedDictionary<int, string>();
 
         public void LeggTilNavn(string navn, int antall)
         {
+            if (antall <= 0)
+                return;
             this.navn.Add(totaltAntallTal, navn);
             totaltAntallTal += antall;
         }

@@ -2,7 +2,7 @@
 
 namespace Navnegenerator.Navneverktøy.Støttetypar
 {
-    internal class FornavnFraCSV : NavnFråCSV
+    internal class FornavnFråCSV : NavnFråCSV
     {
         public string Navn { get; set; }
         public int Antal { get; set; }
@@ -17,12 +17,12 @@ namespace Navnegenerator.Navneverktøy.Støttetypar
         public string Gamal9 { get; set; }
     }
 
-    internal class FornavnFråCsvMapper : CsvClassMap<FornavnFraCSV>
+    internal class FornavnFråCsvMapper : CsvClassMap<FornavnFråCSV>
     {
         public FornavnFråCsvMapper()
         {
             Map(f => f.Navn).Index(0);
-            Map(f => f.Antal).Index(1);
+            Map(f => f.Antal).Index(1).TypeConverter<SSBCSVStringToIntConverter>();
             Map(f => f.Gamal1).Index(2);
             Map(f => f.Gamal2).Index(3);
             Map(f => f.Gamal3).Index(4);

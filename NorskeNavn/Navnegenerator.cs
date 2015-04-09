@@ -7,18 +7,25 @@ namespace NorskeNavn
 {
     public class Navnegenerator
     {
+        private Navneoversikt fornavnsoversikt;
         private Navneoversikt etternavnsoversikt;
 
         public Navnegenerator()
         {
+            etternavnsoversikt = NavneParser.ParseEtternavn(HentReader("NorskeNavn.Resources.etternavn.csv"));
+            fornavnsoversikt = NavneParser.ParseFornavn(HentReader("NorskeNavn.Resources.jentenavn.csv"));
+        }
+
+        private static StreamReader HentReader(string etternavncsv)
+        {
             var assembly = Assembly.GetExecutingAssembly();
-            var etternavnReader = new StreamReader(assembly.GetManifestResourceStream("NorskeNavn.Resources.etternavn.csv"));
-            etternavnsoversikt = NavneParser.ParseEtternavn(etternavnReader);
+            var navneReader = new StreamReader(assembly.GetManifestResourceStream(etternavncsv));
+            return navneReader;
         }
 
         public Navn GenererNyttNavn()
         {
-            return new Navn(null, etternavnsoversikt.HentEitNyttTilfeldigNavn());
+            return new Navn(fornavnsoversikt.HentEitNyttTilfeldigNavn(), etternavnsoversikt.HentEitNyttTilfeldigNavn());
         }
     }
 }

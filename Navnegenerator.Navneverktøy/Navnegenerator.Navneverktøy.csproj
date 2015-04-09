@@ -47,8 +47,9 @@
     <Compile Include="Støttetypar\EtternavnFråCSV.cs" />
     <Compile Include="NavneParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Støttetypar\FornavnFraCSV.cs" />
+    <Compile Include="Støttetypar\FornavnFråCSV.cs" />
     <Compile Include="Støttetypar\NavnFråCSV.cs" />
+    <Compile Include="Støttetypar\SSBCSVStringToIntConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Navnegenerator.Typar\Navnegenerator.Typar.csproj">

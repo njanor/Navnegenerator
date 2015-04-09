@@ -8,6 +8,14 @@ namespace Navnegenerator.Typar.Testar
     public class NavneoversiktTestar
     {
         [Test]
+        public void LeggaTilNavnINavneoversikta_DersomNavnetForkjem0Gongar_SkalDetIkkjeVertaLagtTil()
+        {
+            var navneoversikt = LagNavneoversiktMedNavn(new[] {"Test"}, new[] {0});
+
+            navneoversikt.HentAlleNavn().ShouldBeEmpty();
+        }
+        
+        [Test]
         public void GenereringAvNavn_HentEitNyttTilfeldigNavn_ReturnererEitNavn()
         {
             var navnelista = new[] {"Hansen", "Jensen", "Adolfsen"};

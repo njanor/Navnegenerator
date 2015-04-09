@@ -15,7 +15,7 @@ namespace Navnegenerator.Navneverktøy.Støttetypar
         {
             Map(e => e.Navn);
             Map(e => e.Navn);
-            Map(e => e.Antal).Name("Antall");
+            Map(e => e.Antal).Name("Antall").TypeConverter<SSBCSVStringToIntConverter>();
         }
     }
 }
