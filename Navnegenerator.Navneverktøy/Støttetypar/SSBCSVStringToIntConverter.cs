@@ -1,30 +1,21 @@
 ﻿using System;
+using CsvHelper;
+using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;
 
 namespace Navnegenerator.Navneverktøy.Støttetypar
 {
     internal class SSBCSVStringToIntConverter : ITypeConverter
     {
-        public string ConvertToString(TypeConverterOptions options, object value)
-        {
+
+        public string ConvertToString(object value, IWriterRow row, MemberMapData memberMapData) {
             throw new NotImplementedException();
         }
 
-        public object ConvertFromString(TypeConverterOptions options, string text)
-        {
+        public object ConvertFromString(string text, IReaderRow row, MemberMapData memberMapData) {
             var result = 0;
             int.TryParse(text, out result);
             return result;
-        }
-
-        public bool CanConvertFrom(Type type)
-        {
-            return type == typeof(string);
-        }
-
-        public bool CanConvertTo(Type type)
-        {
-            throw new NotImplementedException();
         }
     }
 }

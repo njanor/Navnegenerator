@@ -9,7 +9,7 @@ namespace Navnegenerator.Navneverktøy.Støttetypar
         public int Antal { get; set; }
     }
 
-    internal class EtternavnFråCSVMapping : CsvClassMap<EtternavnFråCSV>
+    internal class EtternavnFråCSVMapping : ClassMap<EtternavnFråCSV>
     {
         public EtternavnFråCSVMapping()
         {

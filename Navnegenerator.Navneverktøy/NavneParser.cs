@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using CsvHelper;
@@ -41,7 +42,7 @@ namespace Navnegenerator.Navneverktøy
 
         private static CsvReader HentCsvReader<T>(StreamReader navnReader) where T : NavnFråCSV
         {
-            var csv = new CsvReader(navnReader);
+            var csv = new CsvReader(navnReader, CultureInfo.CurrentCulture);
             csv.Configuration.Delimiter = ";";
             csv.Configuration.RegisterClassMap<EtternavnFråCSVMapping>();
             csv.Configuration.RegisterClassMap<FornavnFråCsvMapper>();
