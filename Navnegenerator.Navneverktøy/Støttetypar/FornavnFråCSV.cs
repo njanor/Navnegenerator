@@ -17,7 +17,7 @@ namespace Navnegenerator.Navneverktøy.Støttetypar
         public string Gamal9 { get; set; }
     }
 
-    internal class FornavnFråCsvMapper : CsvClassMap<FornavnFråCSV>
+    internal class FornavnFråCsvMapper : ClassMap<FornavnFråCSV>
     {
         public FornavnFråCsvMapper()
         {

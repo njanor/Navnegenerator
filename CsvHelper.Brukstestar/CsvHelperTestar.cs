@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Globalization;
+using System.IO;
 using System.Linq;
 using CsvHelper.Configuration;
 using NUnit.Framework;
@@ -14,7 +15,7 @@ namespace CsvHelper.Brukstestar
             using( var stream = new MemoryStream() )
 			using( var reader = new StreamReader( stream ) )
 			using( var writer = new StreamWriter( stream ) )
-			using (var csv = new CsvReader(reader))
+			using (var csv = new CsvReader(reader, new CultureInfo("nn-NO")))
 			{
                 writer.WriteLine("Nummer;Tekst;");
                 writer.WriteLine("1;Ein;");
@@ -38,7 +39,7 @@ namespace CsvHelper.Brukstestar
             using( var stream = new MemoryStream() )
 			using( var reader = new StreamReader( stream ) )
 			using( var writer = new StreamWriter( stream ) )
-			using (var csv = new CsvReader(reader))
+			using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
 			{
                 writer.WriteLine(" ,Tekst,");
                 writer.WriteLine("1,Ein,");
@@ -54,7 +55,7 @@ namespace CsvHelper.Brukstestar
 			}
         }
 
-        private class SimpelMapManglandeKolonnenavn : CsvClassMap<Simpel>
+        private class SimpelMapManglandeKolonnenavn : ClassMap<Simpel>
         {
             public SimpelMapManglandeKolonnenavn()
             {
