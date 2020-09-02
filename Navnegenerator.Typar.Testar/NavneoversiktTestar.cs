@@ -7,6 +7,8 @@ namespace Navnegenerator.Typar.Testar
 {
     public class NavneoversiktTestar
     {
+        private static readonly Random Random = new Random();
+
         [Test]
         public void LeggaTilNavnINavneoversikta_DersomNavnetForkjem0Gongar_SkalDetIkkjeVertaLagtTil()
         {
@@ -20,7 +22,7 @@ namespace Navnegenerator.Typar.Testar
         {
             var navnelista = new[] {"Hansen", "Jensen", "Adolfsen"};
             var navneoversikt = LagNavneoversiktMedNavn(navnelista, new[] {3, 2, 1});
-            var navn = navneoversikt.HentEitNyttTilfeldigNavn();
+            var navn = navneoversikt.HentEitNyttTilfeldigNavn(Random);
             navnelista.ShouldContain(navn);
         }
 
@@ -28,7 +30,7 @@ namespace Navnegenerator.Typar.Testar
         public void GenereringAvNavn_NyttTilfeldigNavnUtanNavnINavneoversikt_KastarException()
         {
             var navneoversikt = new Navneoversikt();
-            Should.Throw<NavnegeneratorException>(() => navneoversikt.HentEitNyttTilfeldigNavn());
+            Should.Throw<NavnegeneratorException>(() => navneoversikt.HentEitNyttTilfeldigNavn(Random));
         }
 
         [Test]
@@ -54,7 +56,7 @@ namespace Navnegenerator.Typar.Testar
 
             for (var i = 0; i < antalNavnÅGenerera; i++)
             {
-                var navn = navneoversikt.HentEitNyttTilfeldigNavn();
+                var navn = navneoversikt.HentEitNyttTilfeldigNavn(Random);
                 if (navn.Equals(mestPopulæreNavn))
                     antalMestPopulæreNavnGenerert++;
                 else if (navn.Equals(passePopulæreNavn))

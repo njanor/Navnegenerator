@@ -7,7 +7,6 @@ namespace Navnegenerator.Typar
 {
     public class Navneoversikt
     {
-        private readonly Random random = new Random();
         private int totaltAntallTal;
         private readonly SortedDictionary<int, string> navn = new SortedDictionary<int, string>();
 
@@ -24,10 +23,12 @@ namespace Navnegenerator.Typar
             return navn.Values;
         }
 
-        public string HentEitNyttTilfeldigNavn()
+        public string HentEitNyttTilfeldigNavn(Random random)
         {
             if (navn.Count == 0)
+            {
                 throw new NavnegeneratorException("Kan ikkje generera eit navn når oversikta ikkje har navn.");
+            }
             var navnenummer = random.Next(totaltAntallTal);
             return navn.Last(x => x.Key <= navnenummer).Value;
         }

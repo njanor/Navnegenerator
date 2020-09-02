@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 using Shouldly;
 
@@ -6,6 +7,19 @@ namespace NorskeNavn.Testar
 {
     public class GeneratorTestar
     {
+        [Test]
+        public void GenereringAvNavnMedSeed_Generer_SkalGenereraSameNamn()
+        {
+            var seed = new Random().Next();
+            var fyrsteGenerator = new Generator(seed);
+            var andreGenerator = new Generator(seed);
+
+            var fyrsteNavn = fyrsteGenerator.GenererNyttNavn();
+            var andreNavn = andreGenerator.GenererNyttNavn();
+
+            fyrsteNavn.ShouldBe(andreNavn);
+        }
+        
         [Test]
         public void GenereringAvNavnFråSSB_GenererNyttNavn_FårSkikkelegEtternavn()
         {
